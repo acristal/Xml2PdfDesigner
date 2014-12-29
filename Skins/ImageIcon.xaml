@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <BitmapImage x:Key="EBookmarkImage"     UriSource="pack://application:,,,/Resources/icons/bookmark.png" />
+    <BitmapImage x:Key="EPageImage"         UriSource="pack://application:,,,/Resources/icons/root.png" />
     <BitmapImage x:Key="EImageImage"        UriSource="pack://application:,,,/Resources/icons/image.png" />
     <BitmapImage x:Key="EIncludeImage"      UriSource="pack://application:,,,/Resources/icons/include.png" />
     <BitmapImage x:Key="ELineImage"         UriSource="pack://application:,,,/Resources/icons/line.png" />

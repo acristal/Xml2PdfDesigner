@@ -14,9 +14,8 @@ namespace Xml2PdfDesigner.Design
         public Template ParseTemplateFrom(string path)
         {
             var template = new Template();
-
-            for (var i = 0; i < 15; ++i)
-                template.Elements.Add(CreateDummyElement(1));
+            
+            template.Elements.Add(CreateDummyElement(null, 0));
 
             template.Name = "1 Design-" + 5.RandomString();
             return template;
@@ -26,19 +25,22 @@ namespace Xml2PdfDesigner.Design
         ///     Generates a dummy Element object.
         ///     The deeper we are, the less chance we have to have children elements
         /// </summary>
-        private Element CreateDummyElement(int level)
+        private Element CreateDummyElement(Element parent, int level)
         {
-            var elem = new Element { Name = "D-" + 8.RandomString() };
+            var elem = new Element(parent) { Name = "D-" + 8.RandomString() };
 
             var values = Enum.GetValues(typeof(ElementType));
-            elem.Type = (ElementType)values.GetValue(Random.Next(values.Length - 1) + 1);
+            elem.Type = (ElementType)values.GetValue(Random.Next(values.Length - 2) + 2);
+
+            if (parent == null)
+                elem.Type = ElementType.Page;
 
             if (Random.Next(level * 3) != 0)
                 return elem;
 
-            var nChildren = Random.Next(5) + 1;
+            var nChildren = Random.Next(5) + 1 + (parent == null ? 5 : 0);
             for (var i = 0; i < nChildren; ++i)
-                elem.Elements.Add(CreateDummyElement(level + 1));
+                elem.Elements.Add(CreateDummyElement(elem, level + 1));
             return elem;
         }
     }

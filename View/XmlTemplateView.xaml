@@ -7,6 +7,7 @@
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:local="clr-namespace:Xml2PdfDesigner.Utils"
              xmlns:localization="clr-namespace:Xml2PdfDesigner.ViewLanguages"
+             xmlns:m="clr-namespace:Xml2PdfDesigner.Model"
              xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              xmlns:design="clr-namespace:Xml2PdfDesigner.Design"
              mc:Ignorable="d ignore"

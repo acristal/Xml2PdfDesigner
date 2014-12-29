@@ -28,6 +28,8 @@ namespace Xml2PdfDesigner.Converter
                     return Application.Current.Resources["ELineImage"];
                 case ElementType.Loop:
                     return Application.Current.Resources["ELoopImage"];
+                case ElementType.Page:
+                    return Application.Current.Resources["EPageImage"];
                 case ElementType.Rectangle:
                     return Application.Current.Resources["ERectangleImage"];
                 case ElementType.Table:

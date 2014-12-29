@@ -95,6 +95,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Behavior\FrameworkElementAdorner.cs" />
+    <Compile Include="Behavior\FrameworkElementDragBehavior.cs" />
+    <Compile Include="Behavior\FrameworkElementDropBehavior.cs" />
+    <Compile Include="Behavior\IDragable.cs" />
+    <Compile Include="Behavior\IDropable.cs" />
+    <Compile Include="Behavior\ListBoxAdorner.cs" />
+    <Compile Include="Behavior\ListBoxAdornerManager.cs" />
+    <Compile Include="Behavior\ListBoxDropBehavior.cs" />
     <Compile Include="Converter\ElementTypeToImageConverter.cs" />
     <Compile Include="Design\DesignIOService.cs" />
     <Compile Include="Design\DesignTemplateService.cs" />
@@ -107,6 +115,7 @@
     <Compile Include="Model\TemplateService.cs" />
     <Compile Include="Utils\BindingProxy.cs" />
     <Compile Include="Utils\String.cs" />
+    <Compile Include="Utils\UIHelper.cs" />
     <Compile Include="ViewLanguages\localization.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -219,7 +228,7 @@
     <Resource Include="Resources\icons\undefined.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Behavior\" />
+    <Resource Include="Resources\icons\root.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

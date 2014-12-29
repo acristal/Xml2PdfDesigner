@@ -1,5 +1,7 @@
-﻿using GalaSoft.MvvmLight;
+﻿using System;
 using System.Collections.ObjectModel;
+using GalaSoft.MvvmLight;
+using Xml2PdfDesigner.Behavior;
 
 namespace Xml2PdfDesigner.Model
 {
