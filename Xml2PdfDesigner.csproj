@@ -93,7 +93,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Behavior\BindableSelectedItemBehavior.cs" />
     <Compile Include="Converter\ElementTypeToImageConverter.cs" />
     <Compile Include="Design\DesignIOService.cs" />
     <Compile Include="Design\DesignTemplateService.cs" />
@@ -104,6 +103,7 @@
     <Compile Include="Model\ITemplateService.cs" />
     <Compile Include="Model\Template.cs" />
     <Compile Include="Model\TemplateService.cs" />
+    <Compile Include="Utils\BindingProxy.cs" />
     <Compile Include="Utils\String.cs" />
     <Compile Include="ViewLanguages\localization.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -215,6 +215,9 @@
     <Resource Include="Resources\icons\table.png" />
     <Resource Include="Resources\icons\text.png" />
     <Resource Include="Resources\icons\undefined.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Behavior\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

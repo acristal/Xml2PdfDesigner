@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:ignore="http://www.ignore.com"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:local="clr-namespace:Xml2PdfDesigner.Utils"
              xmlns:localization="clr-namespace:Xml2PdfDesigner.ViewLanguages"
              xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              xmlns:design="clr-namespace:Xml2PdfDesigner.Design"
@@ -69,7 +70,8 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <xctk:PropertyGrid Grid.Row="1" SelectedObject="{Binding SelectedElement}" />
+            <xctk:PropertyGrid Grid.Row="1" SelectedObject="{Binding SelectedElement}" xctk:Themes="">
+            </xctk:PropertyGrid>
         </Grid>
     </Grid>
 </UserControl>

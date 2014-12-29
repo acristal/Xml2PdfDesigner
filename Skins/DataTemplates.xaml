@@ -1,8 +1,10 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:behavior="clr-namespace:Xml2PdfDesigner.Behavior"
+                    xmlns:diagnostics="clr-namespace:System.Diagnostics;assembly=WindowsBase"
+                    xmlns:local="clr-namespace:Xml2PdfDesigner.Utils"
                     xmlns:c="clr-namespace:Xml2PdfDesigner.Converter"
                     xmlns:m="clr-namespace:Xml2PdfDesigner.Model"
+                    xmlns:v="clr-namespace:Xml2PdfDesigner.View"
                     xmlns:vm="clr-namespace:Xml2PdfDesigner.ViewModel"
                     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity">
 
@@ -24,13 +26,17 @@
 
             <Separator Grid.Row="1" />
 
-            <TreeView Name="tvElement"
+            <TreeView x:Name="tvElement"
                       Grid.Row="2"
                       Background="Transparent"
                       ItemsSource="{Binding Elements}">
-                <i:Interaction.Behaviors>
-                    <behavior:BindableSelectedItemBehavior SelectedItem="{Binding SelectedElement, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type vm:XmlTemplateViewModel}}}" />
-                </i:Interaction.Behaviors>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectedItemChanged">
+                        <i:InvokeCommandAction
+                            Command="{Binding DataContext.SelectedCommand, RelativeSource={RelativeSource AncestorType={x:Type v:XmlTemplateView}}}"
+                            CommandParameter="{Binding ElementName=tvElement, Path=SelectedItem, diagnostics:PresentationTraceSources.TraceLevel=High}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
                 <TreeView.ItemContainerStyle>
                     <Style TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource {x:Type TreeViewItem}}">
                         <Setter Property="Background" Value="Transparent" />

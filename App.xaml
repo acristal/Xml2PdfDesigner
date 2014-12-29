@@ -1,32 +1,18 @@
-﻿<Application x:Class="Xml2PdfDesigner.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:vm="clr-namespace:Xml2PdfDesigner.ViewModel"
-             xmlns:view="clr-namespace:Xml2PdfDesigner.View"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             StartupUri="MainWindow.xaml"
-             mc:Ignorable="d">
-
-    <Application.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Skins/MainSkin.xaml" />
-                <ResourceDictionary Source="Skins/ImageIcon.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-
-            <!--Global View Model Locator-->
-            <vm:ViewModelLocator x:Key="Locator"
-                                 d:IsDataSource="True" />
-
-            <DataTemplate DataType="{x:Type vm:IntroViewModel}">
-                <view:IntroView />
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type vm:XmlTemplateViewModel}">
-                <view:XmlTemplateView />
-            </DataTemplate>
-        </ResourceDictionary>
-
-    </Application.Resources>
-
+<Application x:Class="Xml2PdfDesigner.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:vm="clr-namespace:Xml2PdfDesigner.ViewModel" xmlns:view="clr-namespace:Xml2PdfDesigner.View" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" StartupUri="MainWindow.xaml" mc:Ignorable="d">
+  <Application.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Skins/MainSkin.xaml" />
+        <ResourceDictionary Source="Skins/ImageIcon.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+      <!--Global View Model Locator-->
+      <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" />
+      <DataTemplate DataType="{x:Type vm:IntroViewModel}">
+        <view:IntroView />
+      </DataTemplate>
+      <DataTemplate DataType="{x:Type vm:XmlTemplateViewModel}">
+        <view:XmlTemplateView />
+      </DataTemplate>
+    </ResourceDictionary>
+  </Application.Resources>
 </Application>

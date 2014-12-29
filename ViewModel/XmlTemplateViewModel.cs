@@ -1,4 +1,6 @@
-﻿using GalaSoft.MvvmLight;
+﻿using System.Windows.Input;
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using Xml2PdfDesigner.Model;
 
 namespace Xml2PdfDesigner.ViewModel
@@ -58,5 +60,27 @@ namespace Xml2PdfDesigner.ViewModel
         {
             Template = _templateService.ParseTemplateFrom(TemplatePath);
         }
+
+        /// <summary>
+        ///     Update the selected element of the view model
+        /// </summary>
+        private void SetSelectedElement(Element selectedElement)
+        {
+            SelectedElement = selectedElement;
+        }
+
+        #region Selected item changed Command
+
+        private RelayCommand<Element> _selectedCommand;
+
+        /// <summary>
+        ///     Gets the OpenCommand.
+        /// </summary>
+        public ICommand SelectedCommand
+        {
+            get { return _selectedCommand ?? (_selectedCommand = new RelayCommand<Element>(SetSelectedElement)); }
+        }
+
+        #endregion
     }
 }
