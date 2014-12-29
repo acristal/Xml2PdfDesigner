@@ -1,0 +1,26 @@
+﻿<controls:MetroWindow x:Class="Xml2PdfDesigner.MainWindow"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:ignore="http://www.ignore.com"
+                      xmlns:localization="clr-namespace:Xml2PdfDesigner.ViewLanguages"
+                      xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                      mc:Ignorable="d ignore"
+                      MinHeight="400"
+                      MinWidth="700"
+                      Title="Xml2Pdf Designer"
+                      Background="WhiteSmoke"
+                      DataContext="{Binding Main, Source={StaticResource Locator}}">
+
+    <controls:MetroWindow.RightWindowCommands>
+        <controls:WindowCommands>
+            <Button Content="{x:Static localization:localization.NewFile}" Command="{Binding CreateCommand}" />
+            <Button Content="{x:Static localization:localization.Browse}" Command="{Binding OpenCommand}" />
+        </controls:WindowCommands>
+    </controls:MetroWindow.RightWindowCommands>
+
+    <Grid x:Name="LayoutRoot">
+        <ContentControl Content="{Binding CurrentViewModel}" />
+    </Grid>
+</controls:MetroWindow>

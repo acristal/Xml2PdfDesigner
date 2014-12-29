@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <BitmapImage x:Key="EBookmarkImage"     UriSource="pack://application:,,,/Resources/icons/bookmark.png" />
+    <BitmapImage x:Key="EImageImage"        UriSource="pack://application:,,,/Resources/icons/image.png" />
+    <BitmapImage x:Key="EIncludeImage"      UriSource="pack://application:,,,/Resources/icons/include.png" />
+    <BitmapImage x:Key="ELineImage"         UriSource="pack://application:,,,/Resources/icons/line.png" />
+    <BitmapImage x:Key="ELoopImage"         UriSource="pack://application:,,,/Resources/icons/loop.png" />
+    <BitmapImage x:Key="ERectangleImage"    UriSource="pack://application:,,,/Resources/icons/rectangle.png" />
+    <BitmapImage x:Key="ETableImage"        UriSource="pack://application:,,,/Resources/icons/table.png" />
+    <BitmapImage x:Key="ETextImage"         UriSource="pack://application:,,,/Resources/icons/text.png" />
+    <BitmapImage x:Key="EUndefinedImage"    UriSource="pack://application:,,,/Resources/icons/undefined.png" />
+</ResourceDictionary>
