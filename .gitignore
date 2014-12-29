@@ -11,6 +11,7 @@ $RECYCLE.BIN/
 # WPF
 bin/
 obj/
+*.user
 
 # Windows Installer files
 *.cab
