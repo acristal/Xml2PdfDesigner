@@ -27,7 +27,17 @@ namespace Xml2PdfDesigner.Design
         /// </summary>
         private Element CreateDummyElement(Element parent, int level)
         {
-            var elem = new Element(parent) { Name = "D-" + 8.RandomString() };
+            var elem = new Element(parent)
+            {
+                Name = "D-" + 8.RandomString(),
+                Coordinate =
+                {
+                    X = Random.Next(100) / 100.0f,
+                    Y = Random.Next(100) / 100.0f,
+                    Width = Random.Next(20) / 100.0f,
+                    Height = Random.Next(20) / 100.0f
+                }
+            };
 
             var values = Enum.GetValues(typeof(ElementType));
             elem.Type = (ElementType)values.GetValue(Random.Next(values.Length - 2) + 2);

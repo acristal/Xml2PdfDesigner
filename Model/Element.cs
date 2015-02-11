@@ -32,7 +32,7 @@ namespace Xml2PdfDesigner.Model
     {
         public ItemCollection GetValues()
         {
-            var values = (ElementType[]) Enum.GetValues(typeof (ElementType));
+            var values = (ElementType[])Enum.GetValues(typeof(ElementType));
             var ret = new ItemCollection();
 
             foreach (ElementType type in values.Skip(2))
@@ -54,6 +54,7 @@ namespace Xml2PdfDesigner.Model
         public Element(Element parent)
         {
             Parent = parent;
+            Coordinate = new Coordinate();
         }
 
         public Element Parent { get; private set; }
@@ -64,7 +65,7 @@ namespace Xml2PdfDesigner.Model
             set { Set(ref _name, value); }
         }
 
-        [ItemsSource(typeof (ElementTypeItemsSource))]
+        [ItemsSource(typeof(ElementTypeItemsSource))]
         public ElementType Type
         {
             get { return _type; }
@@ -86,10 +87,16 @@ namespace Xml2PdfDesigner.Model
                     _coordinate.PropertyChanged -= CoordinateOnPropertyChanged;
 
                 Set(ref _coordinate, value);
+                RaisePropertyChanged(() => AbsoluteCoordinate);
 
                 if (_coordinate != null)
                     _coordinate.PropertyChanged += CoordinateOnPropertyChanged;
             }
+        }
+
+        public Coordinate AbsoluteCoordinate
+        {
+            get { return GetAbsoluteCoordinate(); }
         }
 
         public ObservableCollection<Element> Elements
@@ -115,7 +122,7 @@ namespace Xml2PdfDesigner.Model
 
         public Type DataType
         {
-            get { return typeof (Element); }
+            get { return typeof(Element); }
         }
 
         /// <summary>
@@ -134,7 +141,7 @@ namespace Xml2PdfDesigner.Model
             element.Parent = this;
         }
 
-        #endregion
+        #endregion IDropable, IDragable members
 
         /// <summary>
         ///     Name of the Element
@@ -145,12 +152,29 @@ namespace Xml2PdfDesigner.Model
             return Name;
         }
 
+        private Coordinate GetAbsoluteCoordinate()
+        {
+            if (Parent == null)
+                return Coordinate;
+
+            Coordinate parentCoordinate = Parent.AbsoluteCoordinate;
+
+            return new Coordinate
+            {
+                X = parentCoordinate.X + (Coordinate.X / 100) * parentCoordinate.Width,
+                Y = parentCoordinate.Y + (Coordinate.Y / 100) * parentCoordinate.Height,
+                Width = parentCoordinate.Width * Coordinate.Width / 100,
+                Height = parentCoordinate.Height * Coordinate.Height / 100
+            };
+        }
+
         /// <summary>
         ///     Propagation of the Coordinate inner Set
         /// </summary>
         private void CoordinateOnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
         {
             RaisePropertyChanged(() => Coordinate);
+            RaisePropertyChanged(() => AbsoluteCoordinate);
         }
     }
 

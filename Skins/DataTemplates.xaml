@@ -9,8 +9,52 @@
 
     <c:ElementTypeToImageConverter x:Key="ElementTypeToImageConverter" />
 
+    <Style x:Key="ElementBorderStyle" TargetType="{x:Type Border}">
+        <Setter Property="BorderBrush" Value="RoyalBlue" />
+        <Setter Property="BorderThickness" Value="1" />
+    </Style>
+
+    <Style x:Key="ElementContainerStyle" TargetType="{x:Type ListViewItem}">
+        <Setter Property="Canvas.Left" Value="{Binding AbsoluteCoordinate.X}" />
+        <Setter Property="Canvas.Top" Value="{Binding AbsoluteCoordinate.Y}" />
+    </Style>
+
+    <!-- Doesn't work -->
+    <Style x:Key="CleanListViewStyle">
+        <Style.Resources>
+            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Red" />
+            <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="DarkGoldenrod" />
+        </Style.Resources>
+    </Style>
+
+    <ItemsPanelTemplate x:Key="ElementPanelTemplate">
+        <Canvas />
+    </ItemsPanelTemplate>
+
     <DataTemplate x:Key="TemplateGraph"
-                  DataType="m:Template" />
+                  DataType="m:Template">
+        <DataTemplate.Resources>
+            <DataTemplate x:Key="ElementTemplate" DataType="{x:Type m:Element}">
+                <Border Style="{StaticResource ElementBorderStyle}">
+                    <Grid Width="{Binding AbsoluteCoordinate.Width}" Height="{Binding AbsoluteCoordinate.Height}">
+                        <ListView ItemsPanel="{StaticResource ElementPanelTemplate}"
+                                  ItemsSource="{Binding Elements}"
+                                  ItemTemplate="{DynamicResource ElementTemplate}"
+                                  ItemContainerStyle="{StaticResource ElementContainerStyle}"
+                                  SelectedItem="{Binding DataContext.SelectedElement, RelativeSource={RelativeSource AncestorType={x:Type v:XmlTemplateView}}}" />
+                    </Grid>
+                </Border>
+            </DataTemplate>
+        </DataTemplate.Resources>
+
+        <Grid>
+            <ListView ItemsPanel="{StaticResource ElementPanelTemplate}"
+                      ItemsSource="{Binding Elements}"
+                      ItemTemplate="{StaticResource ElementTemplate}"
+                      ItemContainerStyle="{StaticResource ElementContainerStyle}"
+                      SelectedItem="{Binding DataContext.SelectedElement, RelativeSource={RelativeSource AncestorType={x:Type v:XmlTemplateView}}}" />
+        </Grid>
+    </DataTemplate>
 
     <DataTemplate x:Key="TemplateList"
                   DataType="m:Template">
@@ -58,5 +102,4 @@
             </TreeView>
         </Grid>
     </DataTemplate>
-
 </ResourceDictionary>
