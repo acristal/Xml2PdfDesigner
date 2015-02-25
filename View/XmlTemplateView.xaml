@@ -9,6 +9,7 @@
              xmlns:localization="clr-namespace:Xml2PdfDesigner.ViewLanguages"
              xmlns:m="clr-namespace:Xml2PdfDesigner.Model"
              xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:design="clr-namespace:Xml2PdfDesigner.Design"
              mc:Ignorable="d ignore"
              DataContext="{Binding XmlTemplate, Source={StaticResource Locator}}"
@@ -30,7 +31,7 @@
             <ColumnDefinition Width="5" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="5" />
-            <ColumnDefinition Width="250" />
+            <ColumnDefinition Width="325" />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>

@@ -78,6 +78,7 @@ namespace Xml2PdfDesigner.Model
             }
         }
 
+        [ExpandableObject]
         public Coordinate Coordinate
         {
             get { return _coordinate; }
@@ -210,6 +211,11 @@ namespace Xml2PdfDesigner.Model
         {
             get { return _height; }
             set { Set(ref _height, value); }
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0:F};{1:F};{2:F};{3:F}", X, Y, Width, Height);
         }
     }
 }

@@ -9,6 +9,14 @@
 
     <c:ElementTypeToImageConverter x:Key="ElementTypeToImageConverter" />
 
+    <Style TargetType="Control" x:Key="EmptyFocusVisualStyle">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style x:Key="ElementBorderStyle" TargetType="{x:Type Border}">
         <Setter Property="BorderBrush" Value="RoyalBlue" />
         <Setter Property="BorderThickness" Value="1" />
@@ -17,6 +25,8 @@
     <Style x:Key="ElementContainerStyle" TargetType="{x:Type ListViewItem}">
         <Setter Property="Canvas.Left" Value="{Binding AbsoluteCoordinate.X}" />
         <Setter Property="Canvas.Top" Value="{Binding AbsoluteCoordinate.Y}" />
+        <!--<Setter Property="FocusVisualStyle" Value="{StaticResource EmptyFocusVisualStyle}" />-->
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
     </Style>
 
     <!-- Doesn't work -->
@@ -28,7 +38,7 @@
     </Style>
 
     <ItemsPanelTemplate x:Key="ElementPanelTemplate">
-        <Canvas />
+        <Canvas IsItemsHost="True" />
     </ItemsPanelTemplate>
 
     <DataTemplate x:Key="TemplateGraph"
@@ -36,7 +46,10 @@
         <DataTemplate.Resources>
             <DataTemplate x:Key="ElementTemplate" DataType="{x:Type m:Element}">
                 <Border Style="{StaticResource ElementBorderStyle}">
-                    <Grid Width="{Binding AbsoluteCoordinate.Width}" Height="{Binding AbsoluteCoordinate.Height}">
+                    <Grid Width="{Binding AbsoluteCoordinate.Width, Mode=TwoWay}" Height="{Binding AbsoluteCoordinate.Height, Mode=TwoWay}">
+                        <i:Interaction.Behaviors>
+                            <behavior:ResizeBehavior AttachedElement="{Binding}" />
+                        </i:Interaction.Behaviors>
                         <ListView ItemsPanel="{StaticResource ElementPanelTemplate}"
                                   ItemsSource="{Binding Elements}"
                                   ItemTemplate="{DynamicResource ElementTemplate}"

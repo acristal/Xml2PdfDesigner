@@ -4,7 +4,7 @@
       <vm:ViewModelLocatorTemplate xmlns:vm="clr-namespace:Xml2PdfDesigner.ViewModel"
                                    x:Key="Locator" />
   </Application.Resources>
-  
+
   In the View:
   DataContext="{Binding Source={StaticResource Locator}, Path=ViewModelName}"
 */

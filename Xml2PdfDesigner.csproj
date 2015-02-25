@@ -26,7 +26,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -95,14 +95,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Behavior\BindableSelectedItemBehavior.cs" />
+    <Compile Include="Behavior\DragBehavior.cs" />
     <Compile Include="Behavior\FrameworkElementAdorner.cs" />
     <Compile Include="Behavior\FrameworkElementDragBehavior.cs" />
     <Compile Include="Behavior\FrameworkElementDropBehavior.cs" />
+    <Compile Include="Behavior\ResizeBehavior.cs" />
     <Compile Include="Behavior\IDragable.cs" />
     <Compile Include="Behavior\IDropable.cs" />
     <Compile Include="Behavior\ListBoxAdorner.cs" />
     <Compile Include="Behavior\ListBoxAdornerManager.cs" />
     <Compile Include="Behavior\ListBoxDropBehavior.cs" />
+    <Compile Include="Behavior\ResizingAdorner.cs" />
     <Compile Include="Converter\ElementTypeToImageConverter.cs" />
     <Compile Include="Design\DesignIOService.cs" />
     <Compile Include="Design\DesignTemplateService.cs" />
